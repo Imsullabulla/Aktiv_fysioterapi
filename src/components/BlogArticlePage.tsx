@@ -106,10 +106,10 @@ export function BlogArticlePage() {
       </section>
 
       {/* Article body */}
-      <article className="max-w-3xl mx-auto px-6 py-16">
+      <article className="max-w-3xl mx-auto px-6 py-10 md:py-16">
         {/* Intro */}
         <motion.p
-          className="text-xl leading-relaxed text-charcoal/80 mb-12 border-l-4 border-brand-secondary pl-6"
+          className="text-lg md:text-xl leading-relaxed text-charcoal/80 mb-8 md:mb-12 border-l-4 border-brand-secondary pl-4 md:pl-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -151,7 +151,7 @@ export function BlogArticlePage() {
 
         {/* Key takeaways */}
         <motion.div
-          className="mt-16 bg-[#224C4F] rounded-2xl p-8"
+          className="mt-10 md:mt-16 bg-[#224C4F] rounded-2xl p-5 md:p-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
@@ -178,7 +178,7 @@ export function BlogArticlePage() {
 
       {/* Related articles */}
       {relatedPosts.length > 0 && (
-        <section className="bg-[#FAF7F2] py-16">
+        <section className="bg-[#FAF7F2] py-10 md:py-16">
           <div className="max-w-6xl mx-auto px-6">
             <h2
               className="text-2xl md:text-3xl font-bold text-charcoal mb-10"
@@ -231,7 +231,7 @@ export function BlogArticlePage() {
       )}
 
       {/* CTA */}
-      <section className="bg-[#224C4F] py-20">
+      <section className="bg-[#224C4F] py-12 md:py-20">
         <motion.div
           className="max-w-3xl mx-auto px-6 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -240,7 +240,7 @@ export function BlogArticlePage() {
           transition={{ duration: 0.6 }}
         >
           <h2
-            className="text-3xl md:text-4xl text-white leading-tight mb-6"
+            className="text-2xl md:text-3xl lg:text-4xl text-white leading-tight mb-6"
             style={{ fontFamily: '"Playfair Display", serif' }}
           >
             Har du brug for{' '}

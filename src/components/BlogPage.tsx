@@ -108,10 +108,10 @@ export function BlogPage() {
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
 
-                <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-40 pb-16">
+                <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-32 md:pt-40 pb-10 md:pb-16">
                     <Link
                         to="/"
-                        className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors mb-8"
+                        className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors mb-6 md:mb-8"
                     >
                         <ArrowLeft size={16} />
                         Tilbage til forsiden
@@ -123,14 +123,14 @@ export function BlogPage() {
                         transition={{ duration: 0.6 }}
                     >
                         <h1
-                            className="text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-6 max-w-4xl text-white"
+                            className="text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-4 md:mb-6 max-w-4xl text-white"
                             style={{ fontFamily: '"Playfair Display", serif' }}
                         >
                             <span className="font-semibold">Blogindlæg om </span>
                             <span className="italic font-medium text-brand-secondary">fysioterapi</span>
                             <span className="font-semibold"> og sundhed</span>
                         </h1>
-                        <p className="text-lg text-white/70 max-w-2xl leading-relaxed">
+                        <p className="text-base md:text-lg text-white/70 max-w-2xl leading-relaxed">
                             Dyk ned i vores blog for at lære mere om, hvordan fysioterapi kan hjælpe dig med alt fra
                             rygsmerter og skulderskader til bedre søvn og sportsperformance. Vi deler viden, erfaringer
                             og de nyeste indsigter inden for fysioterapi.
@@ -140,7 +140,7 @@ export function BlogPage() {
             </section>
 
             {/* Description cards */}
-            <section className="bg-[#FAF7F2] py-16">
+            <section className="bg-[#FAF7F2] py-10 md:py-16">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="bg-white rounded-xl p-6 border border-charcoal/5">
@@ -169,7 +169,7 @@ export function BlogPage() {
             </section>
 
             {/* Blog Grid */}
-            <section className="py-20 relative overflow-hidden">
+            <section className="py-12 md:py-20 relative overflow-hidden">
                 <FlowingLines />
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     {/* Featured post - first item large */}
@@ -188,7 +188,7 @@ export function BlogPage() {
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
                                 </div>
-                                <div className="flex flex-col justify-center p-8 lg:pr-12">
+                                <div className="flex flex-col justify-center p-5 md:p-8 lg:pr-12">
                                     <span className="text-brand-secondary text-xs font-medium uppercase tracking-widest mb-3">
                                         {BLOG_POSTS[0].category}
                                     </span>
@@ -252,10 +252,10 @@ export function BlogPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="bg-[#224C4F] py-20">
+            <section className="bg-[#224C4F] py-12 md:py-20">
                 <div className="max-w-3xl mx-auto px-6 text-center">
                     <h2
-                        className="text-3xl md:text-4xl text-white leading-tight mb-6"
+                        className="text-2xl md:text-3xl lg:text-4xl text-white leading-tight mb-6"
                         style={{ fontFamily: '"Playfair Display", serif' }}
                     >
                         Har du brug for <span className="italic text-brand-secondary">professionel</span> hjælp?

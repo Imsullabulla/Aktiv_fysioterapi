@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll } from 'motion/react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface NavbarProps {
@@ -22,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ alwaysSolid = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(alwaysSolid);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileSpecOpen, setIsMobileSpecOpen] = useState(false);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { scrollY } = useScroll();
 
@@ -44,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({ alwaysSolid = false }) => {
   const handleMouseLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setIsDropdownOpen(false);
-    }, 200);
+    }, 250);
   };
 
   return (
@@ -82,35 +83,89 @@ export const Navbar: React.FC<NavbarProps> = ({ alwaysSolid = false }) => {
                     <AnimatePresence>
                       {isDropdownOpen && (
                         <motion.div
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 8 }}
-                          transition={{ duration: 0.2, ease: 'easeOut' }}
-                          className="absolute -left-24 mt-4 w-[540px] bg-white rounded-2xl shadow-2xl border border-black/5 overflow-hidden z-[60] px-5 pt-4 pb-3"
+                          initial={{ opacity: 0, y: 12, scale: 0.97 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                          className="absolute -left-40 mt-5 w-[620px] rounded-2xl overflow-hidden z-[60]"
+                          style={{
+                            background: 'rgba(255, 255, 255, 0.92)',
+                            backdropFilter: 'blur(20px)',
+                            WebkitBackdropFilter: 'blur(20px)',
+                            boxShadow: '0 25px 60px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.04)',
+                          }}
                         >
-                          {/* Header */}
-                          <p className="text-[10px] font-medium tracking-widest uppercase text-charcoal/35 mb-2 px-2">Specialeområder</p>
+                          {/* Top accent bar */}
+                          <div className="h-[3px] w-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary" />
 
-                          {/* Two-column grid */}
-                          <div className="grid grid-cols-2 gap-x-1 gap-y-0">
-                            {SPECIALTIES.map((spec) => (
+                          <div className="px-6 pt-5 pb-4">
+                            {/* Header */}
+                            <div className="flex items-center justify-between mb-4">
+                              <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-charcoal/30">Specialeområder</p>
+                              <div className="h-px flex-1 ml-4 bg-charcoal/5" />
+                            </div>
+
+                            {/* Specialty cards grid */}
+                            <div className="grid grid-cols-2 gap-2">
+                              {SPECIALTIES.map((spec, index) => (
+                                <motion.div
+                                  key={spec.slug}
+                                  initial={{ opacity: 0, y: 10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ duration: 0.3, delay: 0.05 + index * 0.04, ease: 'easeOut' }}
+                                >
+                                  <Link
+                                    to={`/speciale/${spec.slug}`}
+                                    className="dropdown-card group flex items-center gap-3.5 px-3 py-3 rounded-xl transition-all duration-250 relative overflow-hidden border border-transparent hover:border-brand-primary/10 hover:bg-gradient-to-r hover:from-brand-primary/[0.04] hover:to-transparent"
+                                    onClick={() => setIsDropdownOpen(false)}
+                                  >
+                                    {/* Left accent line on hover */}
+                                    <div className="absolute left-0 top-[20%] bottom-[20%] w-[3px] rounded-full bg-brand-secondary scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-center" />
+
+                                    {/* Image */}
+                                    <div className="relative flex-shrink-0">
+                                      <img
+                                        src={spec.image}
+                                        alt={spec.title}
+                                        className="w-14 h-14 rounded-xl object-cover transition-all duration-300 group-hover:shadow-md"
+                                        style={{
+                                          border: '2px solid rgba(34, 76, 79, 0.08)',
+                                        }}
+                                      />
+                                      <div className="absolute inset-0 rounded-xl ring-2 ring-brand-secondary/0 group-hover:ring-brand-secondary/30 transition-all duration-300" />
+                                    </div>
+
+                                    {/* Text */}
+                                    <div className="min-w-0 flex-1">
+                                      <p className="font-bold text-charcoal text-[13.5px] leading-tight group-hover:text-brand-primary transition-colors duration-200">
+                                        {spec.title}
+                                      </p>
+                                      <p className="text-charcoal/35 text-[11.5px] leading-snug mt-0.5">
+                                        {spec.desc}
+                                      </p>
+                                    </div>
+
+                                    {/* Arrow */}
+                                    <ArrowRight
+                                      size={14}
+                                      className="flex-shrink-0 text-brand-secondary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                                    />
+                                  </Link>
+                                </motion.div>
+                              ))}
+                            </div>
+
+                            {/* Footer CTA */}
+                            <div className="mt-3 pt-3 border-t border-charcoal/5">
                               <Link
-                                key={spec.slug}
-                                to={`/speciale/${spec.slug}`}
-                                className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#f5f1ec] transition-colors group"
+                                to="/#specialeomraader"
+                                className="group/cta flex items-center justify-center gap-2 text-[12px] font-semibold text-brand-primary/60 hover:text-brand-primary transition-colors py-1"
                                 onClick={() => setIsDropdownOpen(false)}
                               >
-                                <img
-                                  src={spec.image}
-                                  alt={spec.title}
-                                  className="w-11 h-11 rounded-full object-cover flex-shrink-0 border border-charcoal/8 group-hover:border-brand-secondary/40 transition-all"
-                                />
-                                <div className="min-w-0">
-                                  <p className="font-semibold text-charcoal text-[13px] leading-tight group-hover:text-brand-primary transition-colors">{spec.title}</p>
-                                  <p className="text-charcoal/40 text-[11px] leading-tight">{spec.desc}</p>
-                                </div>
+                                Se alle specialeområder
+                                <ArrowRight size={12} className="group-hover/cta:translate-x-1 transition-transform duration-200" />
                               </Link>
-                            ))}
+                            </div>
                           </div>
                         </motion.div>
                       )}
@@ -142,43 +197,119 @@ export const Navbar: React.FC<NavbarProps> = ({ alwaysSolid = false }) => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
             className="fixed inset-0 bg-white z-40 pt-24 px-6 md:hidden overflow-y-auto"
           >
-            <div className="flex flex-col gap-6">
-              {NAV_ITEMS.map((item) => (
-                <div key={item}>
-                  {item === 'Blog' || item === 'Betaling' || item === 'Holdtræning' || item === 'Om os' ? (
-                    <Link to={item === 'Blog' ? '/blog' : item === 'Betaling' ? '/betaling' : item === 'Holdtræning' ? '/holdtraening' : '/om-os'} className="text-2xl font-bold text-charcoal hover:text-brand-primary" onClick={() => setIsMenuOpen(false)}>
+            <div className="flex flex-col gap-2">
+              {NAV_ITEMS.map((item, idx) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: 0.05 + idx * 0.04 }}
+                >
+                  {item === 'Specialeområder' ? (
+                    <div>
+                      <button
+                        className="w-full flex items-center justify-between text-2xl font-bold text-charcoal hover:text-brand-primary py-3 transition-colors"
+                        onClick={() => setIsMobileSpecOpen(!isMobileSpecOpen)}
+                      >
+                        {item}
+                        <ChevronDown
+                          size={22}
+                          className={`text-charcoal/30 transition-transform duration-300 ${isMobileSpecOpen ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+
+                      <AnimatePresence>
+                        {isMobileSpecOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                            className="overflow-hidden"
+                          >
+                            <div className="ml-1 mt-1 mb-3 flex flex-col gap-1 border-l-[3px] border-brand-secondary/30 pl-4">
+                              {SPECIALTIES.map((spec, specIdx) => (
+                                <motion.div
+                                  key={spec.slug}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ duration: 0.2, delay: specIdx * 0.04 }}
+                                >
+                                  <Link
+                                    to={`/speciale/${spec.slug}`}
+                                    className="flex items-center gap-3 py-2.5 group"
+                                    onClick={() => setIsMenuOpen(false)}
+                                  >
+                                    <img
+                                      src={spec.image}
+                                      alt={spec.title}
+                                      className="w-10 h-10 rounded-lg object-cover flex-shrink-0 border-2 border-charcoal/5 group-hover:border-brand-secondary/40 transition-all"
+                                    />
+                                    <div>
+                                      <p className="font-semibold text-charcoal text-[15px] leading-tight group-hover:text-brand-primary transition-colors">
+                                        {spec.title}
+                                      </p>
+                                      <p className="text-charcoal/35 text-[12px] leading-tight">
+                                        {spec.desc}
+                                      </p>
+                                    </div>
+                                  </Link>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : item === 'Blog' || item === 'Betaling' || item === 'Holdtræning' || item === 'Om os' ? (
+                    <Link
+                      to={item === 'Blog' ? '/blog' : item === 'Betaling' ? '/betaling' : item === 'Holdtræning' ? '/holdtraening' : '/om-os'}
+                      className="block text-2xl font-bold text-charcoal hover:text-brand-primary py-3 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
                       {item}
                     </Link>
                   ) : (
-                    <a href="#" className="text-2xl font-bold text-charcoal hover:text-brand-primary">
+                    <Link
+                      to="/"
+                      className="block text-2xl font-bold text-charcoal hover:text-brand-primary py-3 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
                       {item}
-                    </a>
+                    </Link>
                   )}
-                  {item === 'Specialeområder' && (
-                    <div className="mt-3 ml-4 flex flex-col gap-3 border-l-2 border-brand-primary/20 pl-4">
-                      {SPECIALTIES.map((spec) => (
-                        <Link
-                          key={spec.slug}
-                          to={`/speciale/${spec.slug}`}
-                          className="text-lg text-charcoal/70 hover:text-brand-primary transition-colors"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {spec.title}
-                        </Link>
-                      ))}
-                    </div>
+
+                  {/* Subtle divider */}
+                  {idx < NAV_ITEMS.length - 1 && (
+                    <div className="h-px bg-charcoal/5" />
                   )}
-                </div>
+                </motion.div>
               ))}
-              <div className="flex flex-col gap-4 pt-6">
-                <a href="https://system.easypractice.net/overview/aktiv-fysioterapi" target="_blank" rel="noopener noreferrer" className="w-full bg-brand-secondary text-white py-4 rounded font-bold block text-center">Book tid</a>
-                <button className="w-full bg-brand-primary text-white py-4 rounded font-bold">Gratis screening</button>
-              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+                className="flex flex-col gap-3 pt-6 mt-2 border-t border-charcoal/10"
+              >
+                <a
+                  href="https://system.easypractice.net/overview/aktiv-fysioterapi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-brand-secondary text-white py-4 rounded-xl font-bold block text-center text-lg hover:shadow-lg transition-shadow"
+                >
+                  Book tid
+                </a>
+                <button className="w-full bg-brand-primary text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-shadow">
+                  Gratis screening
+                </button>
+              </motion.div>
             </div>
           </motion.div>
         )}

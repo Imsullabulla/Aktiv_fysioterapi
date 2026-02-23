@@ -62,11 +62,11 @@ export function PaymentsPage() {
             <Navbar alwaysSolid />
 
             {/* Hero */}
-            <section className="bg-[#FAF7F2] pt-32 pb-20">
+            <section className="bg-[#FAF7F2] pt-28 md:pt-32 pb-14 md:pb-20">
                 <div className="max-w-7xl mx-auto px-6">
                     <Link
                         to="/"
-                        className="inline-flex items-center gap-2 text-sm text-brand-primary/60 hover:text-brand-primary transition-colors mb-8"
+                        className="inline-flex items-center gap-2 text-sm text-brand-primary/60 hover:text-brand-primary transition-colors mb-6 md:mb-8"
                     >
                         <ArrowLeft size={16} />
                         Tilbage til forsiden
@@ -78,13 +78,13 @@ export function PaymentsPage() {
                         transition={{ duration: 0.6 }}
                     >
                         <h1
-                            className="text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-6 max-w-4xl"
+                            className="text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-4 md:mb-6 max-w-4xl"
                             style={{ fontFamily: '"Playfair Display", serif' }}
                         >
                             <span className="font-semibold">Priser & </span>
                             <span className="italic font-medium text-brand-secondary">Betaling</span>
                         </h1>
-                        <p className="text-lg text-charcoal/60 max-w-2xl leading-relaxed">
+                        <p className="text-base md:text-lg text-charcoal/60 max-w-2xl leading-relaxed">
                             Hos Aktiv Fysioterapi behøver du ikke en lægehenvisning for at modtage behandling.
                             Vi tilbyder gennemsigtige priser og fleksible betalingsmuligheder.
                         </p>
@@ -93,17 +93,17 @@ export function PaymentsPage() {
             </section>
 
             {/* Pricing Cards */}
-            <section className="py-20 relative overflow-hidden">
+            <section className="py-12 md:py-20 relative overflow-hidden">
                 <FlowingLines />
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="text-center mb-14"
+                        className="text-center mb-8 md:mb-14"
                     >
                         <h2
-                            className="text-3xl md:text-4xl font-semibold mb-4"
+                            className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4"
                             style={{ fontFamily: '"Playfair Display", serif' }}
                         >
                             Vores priser
@@ -183,7 +183,7 @@ export function PaymentsPage() {
             </section>
 
             {/* Payment & Insurance Section */}
-            <section className="bg-[#FAF7F2] py-20">
+            <section className="bg-[#FAF7F2] py-12 md:py-20">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                         {/* Insurance info */}

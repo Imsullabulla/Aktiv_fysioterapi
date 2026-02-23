@@ -19,7 +19,7 @@ export function HoldtraeningPage() {
             <Navbar alwaysSolid />
 
             {/* Hero */}
-            <section className="bg-[#224C4F] pt-32 pb-20 relative overflow-hidden">
+            <section className="bg-[#224C4F] pt-28 md:pt-32 pb-14 md:pb-20 relative overflow-hidden">
                 {/* Decorative circles */}
                 <div className="absolute top-20 right-[10%] w-80 h-80 rounded-full bg-white/[0.03] blur-sm" />
                 <div className="absolute bottom-0 left-[5%] w-60 h-60 rounded-full bg-brand-secondary/[0.06]" />
@@ -39,13 +39,13 @@ export function HoldtraeningPage() {
                         transition={{ duration: 0.6 }}
                     >
                         <h1
-                            className="text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-6 max-w-4xl text-white"
+                            className="text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-4 md:mb-6 max-w-4xl text-white"
                             style={{ fontFamily: '"Playfair Display", serif' }}
                         >
                             <span className="font-semibold">Hold</span>
                             <span className="italic font-medium text-brand-secondary">træning</span>
                         </h1>
-                        <p className="text-lg text-white/60 max-w-2xl leading-relaxed mb-8">
+                        <p className="text-base md:text-lg text-white/60 max-w-2xl leading-relaxed mb-6 md:mb-8">
                             Træn i fællesskab med vores holdtræningsforløb. Vi tilbyder bootcamps og golftræning
                             for alle niveauer — ledet af erfarne fysioterapeuter.
                         </p>
@@ -65,16 +65,16 @@ export function HoldtraeningPage() {
             </section>
 
             {/* Live EasyPractice Embed */}
-            <section className="py-16 bg-[#FAF7F2]">
+            <section className="py-10 md:py-16 bg-[#FAF7F2]">
                 <div className="max-w-5xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="text-center mb-10"
+                        className="text-center mb-8 md:mb-10"
                     >
                         <h2
-                            className="text-3xl md:text-4xl font-semibold mb-4"
+                            className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4"
                             style={{ fontFamily: '"Playfair Display", serif' }}
                         >
                             Kommende holdforløb
@@ -113,7 +113,7 @@ export function HoldtraeningPage() {
             </section>
 
             {/* Membership CTA */}
-            <section className="bg-white py-20">
+            <section className="bg-white py-12 md:py-20">
                 <div className="max-w-3xl mx-auto px-6 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -124,7 +124,7 @@ export function HoldtraeningPage() {
                             <Users className="text-brand-primary" size={28} />
                         </div>
                         <h2
-                            className="text-3xl md:text-4xl font-semibold mb-4"
+                            className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4"
                             style={{ fontFamily: '"Playfair Display", serif' }}
                         >
                             Bliv medlem

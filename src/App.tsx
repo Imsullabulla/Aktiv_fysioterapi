@@ -99,7 +99,7 @@ function Home() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/hero-video.mp4" type="video/mp4" />
+            <source src="/Hero_video.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -114,7 +114,7 @@ function Home() {
 
 
             {/* Main heading */}
-            <h1 className="text-white leading-[1.1] mb-6 max-w-5xl" style={{ fontFamily: '"Playfair Display", serif' }}>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl text-white leading-[1.1] mb-6 max-w-5xl" style={{ fontFamily: '"Playfair Display", serif' }}>
               <span className="font-semibold">Helhedsorienteret</span>
               <br />
               <span className="italic font-medium text-brand-secondary">behandling</span>
@@ -124,10 +124,10 @@ function Home() {
             </h1>
 
             {/* Trust Stats Bar */}
-            <div className="mb-8">
-              <div className="flex items-center divide-x divide-white/10">
+            <div className="mb-8 overflow-x-auto">
+              <div className="flex items-center divide-x divide-white/10 min-w-max">
                 {/* Sund Krop */}
-                <div className="flex items-center gap-2 pr-6 md:pr-8">
+                <div className="flex items-center gap-2 pr-4 md:pr-8">
                   <svg width="16" height="24" viewBox="0 0 16 24" fill="none" className="text-white/30 flex-shrink-0">
                     <path d="M8 1C6 4 3 6 2 10C1 14 2 17 3.5 20C4.5 22 6 23 8 24" stroke="currentColor" strokeWidth="1" fill="none" strokeLinecap="round" />
                     <path d="M6.5 5C5 7 3.5 9 3.5 12" stroke="currentColor" strokeWidth="0.8" fill="none" strokeLinecap="round" />
@@ -143,13 +143,13 @@ function Home() {
                 </div>
 
                 {/* 100% Tilfredshed */}
-                <div className="px-6 md:px-8 text-center">
+                <div className="px-4 md:px-8 text-center">
                   <p className="text-white/90 text-lg md:text-xl leading-tight font-light" style={{ fontFamily: '"Playfair Display", serif' }}>100%</p>
                   <p className="text-white/35 text-[9px] md:text-[10px] font-light tracking-widest uppercase">Tilfredshed</p>
                 </div>
 
                 {/* Star Rating */}
-                <div className="px-6 md:px-8 text-center">
+                <div className="px-4 md:px-8 text-center">
                   <div className="flex items-center gap-1.5 justify-center">
                     <p className="text-white/90 text-lg md:text-xl leading-tight font-light" style={{ fontFamily: '"Playfair Display", serif' }}>5.0</p>
                     <div className="flex gap-px">
@@ -162,7 +162,7 @@ function Home() {
                 </div>
 
                 {/* Review Count */}
-                <div className="pl-6 md:pl-8 text-center">
+                <div className="pl-4 md:pl-8 text-center">
                   <p className="text-white/90 text-lg md:text-xl leading-tight font-light" style={{ fontFamily: '"Playfair Display", serif' }}>40+</p>
                   <p className="text-white/35 text-[9px] md:text-[10px] font-light tracking-widest uppercase">Anmeldelser</p>
                 </div>
@@ -170,18 +170,18 @@ function Home() {
             </div>
 
             {/* Description text — directly on background, no box */}
-            <div className="max-w-4xl mb-8">
-              <p className="text-lg text-white/80 leading-relaxed">
+            <div className="w-full max-w-4xl mb-8">
+              <p className="text-base md:text-lg text-white/80 leading-relaxed">
                 Hos Aktiv Fysioterapi tilbyder vi en aktiv, moderne og grundig undersøgelse for at finde årsagen til dine smerter. Vi tager dig seriøst, lytter til dine udfordringer og sammensætter en behandling skræddersyet til netop dig – så du kan komme tilbage til et aktivt og smertefrit liv.
               </p>
             </div>
 
-            {/* CTA buttons — centered */}
-            <div className="flex flex-wrap justify-center gap-6 w-full">
-              <a href="https://system.easypractice.net/overview/aktiv-fysioterapi" target="_blank" rel="noopener noreferrer" className="bg-white text-charcoal px-12 py-5 rounded font-bold text-lg hover:scale-105 transition-transform shadow-xl">
+            {/* CTA buttons — stacked on mobile, side-by-side on sm+ */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full">
+              <a href="https://system.easypractice.net/overview/aktiv-fysioterapi" target="_blank" rel="noopener noreferrer" className="bg-white text-charcoal px-8 sm:px-12 py-4 sm:py-5 rounded font-bold text-base md:text-lg hover:scale-105 transition-transform shadow-xl text-center">
                 Book tid
               </a>
-              <button className="bg-brand-secondary text-white px-12 py-5 rounded font-bold text-lg hover:scale-105 transition-transform shadow-xl">
+              <button className="bg-brand-secondary text-white px-8 sm:px-12 py-4 sm:py-5 rounded font-bold text-base md:text-lg hover:scale-105 transition-transform shadow-xl">
                 Gratis screening
               </button>
             </div>
@@ -252,7 +252,7 @@ function Home() {
                 </div>
 
                 <div className="flex flex-col items-end">
-                  <span className="font-caveat text-5xl text-brand-primary mb-2 transform -rotate-2 select-none">
+                  <span className="font-caveat text-3xl md:text-5xl text-brand-primary mb-2 transform -rotate-2 select-none">
                     Anders Ranum
                   </span>
                   <div className="text-right">
@@ -271,15 +271,15 @@ function Home() {
       {/* Team Section */}
       <section id="team" className="section-padding bg-[#FAF7F2]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-end mb-16">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-8 md:mb-16 gap-6">
             <div className="max-w-2xl">
-              <h2 className="font-bold mb-8">Mød holdet bag Aktiv Fysioterapi</h2>
-              <p className="text-xl text-charcoal/70">
+              <h2 className="font-bold mb-4 md:mb-8">Mød holdet bag Aktiv Fysioterapi</h2>
+              <p className="text-lg md:text-xl text-charcoal/70">
                 Vores team består af engagerede og dygtige fysioterapeuter, der står klar til at hjælpe dig med din genoptræning og behandling.
               </p>
             </div>
-            {/* Navigation buttons in top right */}
-            <div className="flex items-center gap-2 mb-2">
+            {/* Navigation buttons */}
+            <div className="flex items-center gap-2">
               <button
                 onClick={() => teamRef.current?.scrollPrev()}
                 className="text-charcoal/60 hover:text-brand-primary hover:scale-110 active:scale-95 transition-all duration-200"
@@ -425,7 +425,7 @@ function Home() {
                     />
                   </button>
                   <div
-                    className={`overflow-hidden transition-all duration-300 ${openFaqIndex === index ? 'max-h-40 pb-5' : 'max-h-0'}`}
+                    className={`overflow-hidden transition-all duration-300 ${openFaqIndex === index ? 'max-h-96 pb-5' : 'max-h-0'}`}
                   >
                     <p className="text-charcoal/70 leading-relaxed">{item.a}</p>
                   </div>
@@ -442,7 +442,7 @@ function Home() {
       <section id="kontakt" className="section-padding bg-white relative overflow-hidden">
         <FlowingLines />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <h2 className="font-bold mb-12">Kontakt & Kort</h2>
+          <h2 className="font-bold mb-8 md:mb-12">Kontakt & Kort</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left: Contact form */}
             <div>
@@ -541,22 +541,22 @@ function Home() {
       {/* Insurance Partners */}
       <section className="bg-[#FAF7F2] py-16 relative z-10">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <p className="text-xs font-semibold tracking-[0.25em] uppercase text-charcoal/50 mb-12">
+          <p className="text-xs font-semibold tracking-[0.25em] uppercase text-charcoal/50 mb-8 md:mb-12">
             Samarbejder med de fleste forsikringsselskaber
           </p>
           {/* Row 1 */}
-          <div className="flex flex-wrap justify-center items-center gap-x-14 gap-y-8 mb-8">
-            <span className="text-2xl font-black text-charcoal/50 tracking-tight lowercase">tryg</span>
-            <span className="text-xl font-semibold text-charcoal/50">Topdanmark</span>
-            <span className="text-xl font-bold text-charcoal/50 tracking-widest">CODAN</span>
-            <span className="text-xl font-medium text-charcoal/50">Alm. Brand</span>
+          <div className="flex flex-wrap justify-center items-center gap-x-8 md:gap-x-14 gap-y-6 mb-6 md:mb-8">
+            <span className="text-xl md:text-2xl font-black text-charcoal/50 tracking-tight lowercase">tryg</span>
+            <span className="text-lg md:text-xl font-semibold text-charcoal/50">Topdanmark</span>
+            <span className="text-lg md:text-xl font-bold text-charcoal/50 tracking-widest">CODAN</span>
+            <span className="text-lg md:text-xl font-medium text-charcoal/50">Alm. Brand</span>
           </div>
           {/* Row 2 */}
-          <div className="flex flex-wrap justify-center items-center gap-x-14 gap-y-8">
-            <span className="text-2xl font-black text-charcoal/50 tracking-widest">PFA</span>
-            <span className="text-xl font-semibold text-charcoal/50">Danica Pension</span>
-            <span className="text-xl font-medium text-charcoal/50">✦ Mølholm</span>
-            <span className="text-xl font-medium text-charcoal/50">+ Falck Healthcare</span>
+          <div className="flex flex-wrap justify-center items-center gap-x-8 md:gap-x-14 gap-y-6">
+            <span className="text-xl md:text-2xl font-black text-charcoal/50 tracking-widest">PFA</span>
+            <span className="text-lg md:text-xl font-semibold text-charcoal/50">Danica Pension</span>
+            <span className="text-lg md:text-xl font-medium text-charcoal/50">✦ Mølholm</span>
+            <span className="text-lg md:text-xl font-medium text-charcoal/50">+ Falck Healthcare</span>
           </div>
         </div>
       </section>
@@ -673,18 +673,18 @@ function Home() {
             </div>
 
             {/* CTA buttons */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
               <a
                 href="https://dk.trustpilot.com/review/aktiv-fysioterapi.dk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-brand-secondary text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform shadow-lg"
+                className="bg-brand-secondary text-white px-8 py-4 rounded font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform shadow-lg text-center"
               >
                 Læs anmeldelser
               </a>
               <a
                 href="#kontakt"
-                className="border-2 border-white/40 text-white px-10 py-4 rounded font-bold text-sm uppercase tracking-wider hover:bg-white/10 hover:border-white/70 transition-all"
+                className="border-2 border-white/40 text-white px-8 py-4 rounded font-bold text-sm uppercase tracking-wider hover:bg-white/10 hover:border-white/70 transition-all text-center"
               >
                 Kontakt klinikken
               </a>
@@ -697,13 +697,13 @@ function Home() {
       <footer className="bg-[#224C4F] text-white">
 
         {/* CTA Banner */}
-        <div className="max-w-3xl mx-auto px-6 py-20 text-center">
-          <h2 className="text-4xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: '"Playfair Display", serif' }}>
+        <div className="max-w-3xl mx-auto px-6 py-12 md:py-20 text-center">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: '"Playfair Display", serif' }}>
             Har du brug for{' '}
             <span className="italic text-brand-secondary">professionel</span>
             {' '}hjælp?
           </h2>
-          <p className="text-white/60 mb-10 text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-white/60 mb-8 md:mb-10 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
             Vores erfarne fysioterapeuter er klar til at hjælpe dig med at komme smerterne til livs. Book en tid eller ring til os i dag.
           </p>
           <div className="flex justify-center">
@@ -711,7 +711,7 @@ function Home() {
               href="https://system.easypractice.net/overview/aktiv-fysioterapi"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-charcoal px-10 py-4 rounded font-bold hover:scale-105 transition-transform"
+              className="bg-white text-charcoal px-8 md:px-10 py-4 rounded font-bold hover:scale-105 transition-transform"
             >
               Book tid
             </a>
@@ -719,8 +719,8 @@ function Home() {
         </div>
 
         {/* 4-column grid */}
-        <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="max-w-7xl mx-auto px-6 pt-8 md:pt-16 pb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-16">
             <div>
               <div className="mb-8">
                 <img
