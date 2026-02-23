@@ -192,35 +192,29 @@ function Home() {
       {/* Treatments Section */}
       <section id="behandlinger" className="py-10 md:py-16 bg-[#FAF7F2] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
-            {/* Left: title, description, arrows */}
-            <div className="flex-none md:w-72 flex flex-col gap-8">
-              <div>
-                <h2 className="font-bold mb-4 text-brand-secondary">Behandlinger</h2>
-                <p className="text-lg text-charcoal/70">
-                  Vi tilbyder en bred vifte af specialiserede behandlinger tilpasset dine unikke behov og udfordringer.
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => treatmentsRef.current?.scrollPrev()}
-                  className="text-charcoal/60 hover:text-brand-primary hover:scale-110 active:scale-95 transition-all duration-200"
-                >
-                  <ChevronLeft size={32} strokeWidth={2.5} />
-                </button>
-                <button
-                  onClick={() => treatmentsRef.current?.scrollNext()}
-                  className="text-charcoal/60 hover:text-brand-primary hover:scale-110 active:scale-95 transition-all duration-200"
-                >
-                  <ChevronRight size={32} strokeWidth={2.5} />
-                </button>
-              </div>
+          <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-8 md:mb-16 gap-6">
+            <div className="max-w-2xl">
+              <h2 className="font-bold mb-4 text-brand-secondary">Behandlinger</h2>
+              <p className="text-lg text-charcoal/70">
+                Vi tilbyder en bred vifte af specialiserede behandlinger tilpasset dine unikke behov og udfordringer.
+              </p>
             </div>
-            {/* Right: carousel */}
-            <div className="flex-1 overflow-hidden min-w-0">
-              <Carousel ref={treatmentsRef} items={TREATMENTS} />
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => treatmentsRef.current?.scrollPrev()}
+                className="text-charcoal/60 hover:text-brand-primary hover:scale-110 active:scale-95 transition-all duration-200"
+              >
+                <ChevronLeft size={32} strokeWidth={1.5} />
+              </button>
+              <button
+                onClick={() => treatmentsRef.current?.scrollNext()}
+                className="text-charcoal/60 hover:text-brand-primary hover:scale-110 active:scale-95 transition-all duration-200"
+              >
+                <ChevronRight size={32} strokeWidth={1.5} />
+              </button>
             </div>
           </div>
+          <Carousel ref={treatmentsRef} items={TREATMENTS} />
         </div>
       </section>
 
