@@ -1,0 +1,5 @@
+{
+  "name": "Aktiv Fysioterapi",
+  "description": "Professionel fysioterapi og osteopati booking portal med fokus på helhedsorienteret behandling.",
+  "requestFramePermissions": ["geolocation"]
+}
