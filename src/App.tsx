@@ -190,7 +190,7 @@ function Home() {
       </section>
 
       {/* Treatments Section */}
-      <section id="behandlinger" className="py-10 md:py-16 bg-[#FAF7F2]">
+      <section id="behandlinger" className="py-10 md:py-16 bg-[#FAF7F2] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
             {/* Left: title, description, arrows */}
@@ -269,7 +269,7 @@ function Home() {
       <WaveDivider fromColor="#ffffff" toColor="#FAF7F2" />
 
       {/* Team Section */}
-      <section id="team" className="section-padding bg-[#FAF7F2]">
+      <section id="team" className="section-padding bg-[#FAF7F2] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-8 md:mb-16 gap-6">
             <div className="max-w-2xl">
