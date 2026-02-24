@@ -75,6 +75,15 @@ function Home() {
   const [reviewIndex, setReviewIndex] = useState(0);
   const treatmentsRef = useRef<CarouselHandle>(null);
   const teamRef = useRef<CarouselHandle>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Fix React's muted attribute serialization bug — set muted directly on DOM node
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.play().catch(() => {});
+  }, []);
 
   // Auto-rotate reviews
   useEffect(() => {
@@ -94,9 +103,9 @@ function Home() {
         <div className="absolute inset-0 w-full h-full">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <video
+            ref={videoRef}
             autoPlay
             loop
-            muted
             playsInline
             className="w-full h-full object-cover"
           >
@@ -104,7 +113,8 @@ function Home() {
           </video>
         </div>
 
-        <div className="relative z-20 h-full max-w-7xl mx-auto px-6 flex flex-col justify-end items-start pb-12 md:pb-20">
+        <div className="relative z-20 h-full max-w-7xl mx-auto px-6 flex flex-col items-start">
+          <div className="mt-auto pt-20 pb-12 md:pb-20 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -187,6 +197,7 @@ function Home() {
               </button>
             </div>
           </motion.div>
+          </div>{/* end mt-auto wrapper */}
         </div>
       </section>
 

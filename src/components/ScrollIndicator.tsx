@@ -61,7 +61,7 @@ export function ScrollIndicator() {
 
     return (
         <div
-            className="fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-0 transition-all duration-500"
+            className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-0 transition-all duration-500"
             style={{
                 opacity: isVisible ? 1 : 0,
                 pointerEvents: isVisible ? 'auto' : 'none',
