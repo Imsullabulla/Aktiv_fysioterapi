@@ -11,6 +11,8 @@ import { PaymentsPage } from './components/PaymentsPage';
 import { HoldtraeningPage } from './components/HoldtraeningPage';
 import { PolicyPage } from './components/PolicyPage';
 import { OmOsPage } from './components/OmOsPage';
+import { AuroraText } from './components/AuroraText';
+import { Marquee } from './components/Marquee';
 import { BlogArticlePage } from './components/BlogArticlePage';
 import { Navbar } from './components/Navbar';
 import { FlowingLines, WaveDivider } from './components/FlowingLines';
@@ -28,13 +30,13 @@ const TREATMENTS = [
 ];
 
 const TEAM = [
-  { id: '1', title: 'Anders Ranum', description: 'Nakke-Fysioterapeut', image: '', link: '#' },
-  { id: '2', title: 'Benjamin Mark Andersen', description: 'Fysioterapeut, Professionel triatlon coach, Cykel vejleder, Ankel-specialist', image: '', link: '#' },
-  { id: '3', title: 'Martine Hoaas', description: 'Professionel løbe coach, Ernæringsekspert', image: '', link: '#' },
-  { id: '4', title: 'Sascha Christensen', description: 'Skulder-Fysioterapeut og Fysiurgisk Massør', image: '', link: '#' },
-  { id: '5', title: 'Julie Sandager', description: 'Knæ og Hofte Fysioterapeut', image: '', link: '#' },
-  { id: '6', title: 'Julie Mark-Skousgaard', description: 'Fysiurgisk Massør', image: '', link: '#' },
-  { id: '7', title: 'Malte Pedersen', description: 'Ryg-Fysioterapeut og Fysiurgisk Massør', image: '', link: '#' },
+  { id: '1', title: 'Anders Ranum', description: 'Nakke-Fysioterapeut', image: '', link: 'https://system.easypractice.net/book/aktiv-fysioterapi#choose-where' },
+  { id: '2', title: 'Benjamin Mark Andersen', description: 'Fysioterapeut, Professionel triatlon coach, Cykel vejleder, Ankel-specialist', image: '', link: 'https://system.easypractice.net/book/aktiv-fysioterapi#choose-where' },
+  { id: '3', title: 'Martine Hoaas', description: 'Professionel løbe coach, Ernæringsekspert', image: '', link: 'https://system.easypractice.net/book/aktiv-fysioterapi#choose-where' },
+  { id: '4', title: 'Sascha Christensen', description: 'Skulder-Fysioterapeut og Fysiurgisk Massør', image: '', link: 'https://system.easypractice.net/book/aktiv-fysioterapi#choose-where' },
+  { id: '5', title: 'Julie Sandager', description: 'Knæ og Hofte Fysioterapeut', image: '', link: 'https://system.easypractice.net/book/aktiv-fysioterapi#choose-where' },
+  { id: '6', title: 'Julie Mark-Skousgaard', description: 'Fysiurgisk Massør', image: '', link: 'https://system.easypractice.net/book/aktiv-fysioterapi#choose-where' },
+  { id: '7', title: 'Malte Pedersen', description: 'Ryg-Fysioterapeut og Fysiurgisk Massør', image: '', link: 'https://system.easypractice.net/book/aktiv-fysioterapi#choose-where' },
 ];
 
 const GOOGLE_REVIEWS = [
@@ -43,6 +45,15 @@ const GOOGLE_REVIEWS = [
   { name: 'Sarah L.', text: 'Jeg kan varmt anbefale Aktiv Fysioterapi! De kender deres stof og laver grundige undersøgelser.', rating: 5 },
   { name: 'Peter S.', text: 'God service og kompetente behandlere. Føler mig altid tryg og godt behandlet.', rating: 5 },
   { name: 'Morten K.', text: 'Fantastisk klinik med dygtige fysioterapeuter. Har hjulpet mig med min ryg efter mange år med smerter.', rating: 5 },
+  { name: 'Jørgen B.', text: 'Jeg har fået exceptionel god fysioterapi på min skulder. En skulderskade der har plaget mig i flere år er nu trænet godt og grundigt. Super professionelle på alle måder!', rating: 5 },
+  { name: 'Johanne P.', text: 'Rigtig godt forløb. Jeg nåede mine mål, blev stærkere i ryggen og kroppen generelt. Min varmeste anbefaling herfra.', rating: 5 },
+  { name: 'Gitte S.', text: 'Julie har gjort underværker for mig. Jeg genvandt min tro på at kunne tage lange gåture og vandre i dagevis igen.', rating: 5 },
+  { name: 'Dorte N.', text: 'Super imødekommende, fleksible og løsningsorienterede. Alle hos Aktiv Fysioterapi er søde og hjælpsomme – der er ingen problemer, kun opgaver de løser.', rating: 5 },
+  { name: 'Mariann J.', text: 'Jeg kom med langvarige lændesmerter og efter fire måneders samarbejde har mine smerter reduceret markant. Fantastisk behandling.', rating: 5 },
+  { name: 'Lone I.', text: 'Det bedste sted at vælge, hvis din krop laver ballade. Her får du øvelser der er skræddersyet præcist til din krop. Kan kun anbefales!', rating: 5 },
+  { name: 'Tobias M.', text: 'Havde et løbeforløb med Martine, som hjalp mig med at få det bedste ud af min træning. Flotte faciliteter og sødt personale. Stærkt anbefalet!', rating: 5 },
+  { name: 'Henrik A.', text: 'Professionel og grundig behandling fra start til slut. Man føler sig virkelig lyttet til og forstået. Klart den bedste klinik i området.', rating: 5 },
+  { name: 'Katrine B.', text: 'Fik hjælp til mine knæproblemer efter løb. Behandlingsplanen var præcis og effektiv. Er nu helt smertefri – tusind tak!', rating: 5 },
 ];
 
 // News items are derived from blog posts
@@ -50,6 +61,7 @@ const NEWS = BLOG_POSTS.slice(0, 4).map((post, i) => ({
   id: i + 1,
   title: post.title,
   date: post.date,
+  slug: post.slug,
 }));
 
 
@@ -72,7 +84,7 @@ export default function App() {
 
 function Home() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [reviewIndex, setReviewIndex] = useState(0);
+
   const treatmentsRef = useRef<CarouselHandle>(null);
   const teamRef = useRef<CarouselHandle>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -82,16 +94,10 @@ function Home() {
     const v = videoRef.current;
     if (!v) return;
     v.muted = true;
-    v.play().catch(() => {});
+    v.play().catch(() => { });
   }, []);
 
-  // Auto-rotate reviews
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setReviewIndex((prev) => (prev + 1) % GOOGLE_REVIEWS.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
+
 
   return (
     <div className="min-h-screen bg-white font-sans text-charcoal antialiased">
@@ -115,99 +121,96 @@ function Home() {
 
         <div className="relative z-20 h-full max-w-7xl mx-auto px-6 flex flex-col items-start">
           <div className="mt-auto pt-20 pb-12 md:pb-20 w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full"
-          >
-            {/* Brand name */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="w-full"
+            >
+              {/* Brand name */}
 
 
-            {/* Main heading */}
-            <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-white leading-[1.1] mb-6 max-w-5xl" style={{ fontFamily: '"Playfair Display", serif' }}>
-              <span className="font-semibold">Helhedsorienteret</span>
-              <br />
-              <span className="italic font-medium text-brand-secondary">behandling</span>
-              <span className="font-semibold"> med</span>
-              <br />
-              <span className="font-semibold">fysioterapi</span>
-            </h1>
+              {/* Main heading */}
+              <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-white leading-[1.1] mb-6 max-w-5xl" style={{ fontFamily: '"Playfair Display", serif' }}>
+                <span className="font-semibold">Helhedsorienteret</span>
+                <br />
+                <AuroraText className="italic font-medium" colors={["#FF0080", "#7928CA", "#0070F3", "#38bdf8"]} speed={1}>behandling</AuroraText>
+                <span className="font-semibold"> med</span>
+                <br />
+                <span className="font-semibold">fysioterapi</span>
+              </h1>
 
-            {/* Trust Stats Bar */}
-            <div className="mb-8 overflow-x-auto">
-              <div className="flex items-center divide-x divide-white/10 min-w-max">
-                {/* Sund Krop */}
-                <div className="flex items-center gap-2 pr-4 md:pr-8">
-                  <svg width="16" height="24" viewBox="0 0 16 24" fill="none" className="text-white/30 flex-shrink-0">
-                    <path d="M8 1C6 4 3 6 2 10C1 14 2 17 3.5 20C4.5 22 6 23 8 24" stroke="currentColor" strokeWidth="1" fill="none" strokeLinecap="round" />
-                    <path d="M6.5 5C5 7 3.5 9 3.5 12" stroke="currentColor" strokeWidth="0.8" fill="none" strokeLinecap="round" />
-                  </svg>
-                  <div className="text-center">
-                    <p className="text-white/90 text-sm md:text-base leading-tight" style={{ fontFamily: '"Playfair Display", serif' }}>Sund Krop</p>
-                    <p className="text-white/35 text-[9px] md:text-[10px] font-light tracking-widest uppercase">Betroet af mange</p>
-                  </div>
-                  <svg width="16" height="24" viewBox="0 0 16 24" fill="none" className="text-white/30 flex-shrink-0 scale-x-[-1]">
-                    <path d="M8 1C6 4 3 6 2 10C1 14 2 17 3.5 20C4.5 22 6 23 8 24" stroke="currentColor" strokeWidth="1" fill="none" strokeLinecap="round" />
-                    <path d="M6.5 5C5 7 3.5 9 3.5 12" stroke="currentColor" strokeWidth="0.8" fill="none" strokeLinecap="round" />
-                  </svg>
-                </div>
-
-                {/* 100% Tilfredshed */}
-                <div className="px-4 md:px-8 text-center">
-                  <p className="text-white/90 text-lg md:text-xl leading-tight font-light" style={{ fontFamily: '"Playfair Display", serif' }}>100%</p>
-                  <p className="text-white/35 text-[9px] md:text-[10px] font-light tracking-widest uppercase">Tilfredshed</p>
-                </div>
-
-                {/* Star Rating */}
-                <div className="px-4 md:px-8 text-center">
-                  <div className="flex items-center gap-1.5 justify-center">
-                    <p className="text-white/90 text-lg md:text-xl leading-tight font-light" style={{ fontFamily: '"Playfair Display", serif' }}>5.0</p>
-                    <div className="flex gap-px">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={10} className="fill-white/40 text-white/40" />
-                      ))}
+              {/* Trust Stats Bar */}
+              <div className="mb-8 overflow-x-auto">
+                <div className="flex items-center divide-x divide-white/10 min-w-max">
+                  {/* Sund Krop */}
+                  <div className="flex items-center gap-2 pr-4 md:pr-8">
+                    <svg width="16" height="24" viewBox="0 0 16 24" fill="none" className="text-white/30 flex-shrink-0">
+                      <path d="M8 1C6 4 3 6 2 10C1 14 2 17 3.5 20C4.5 22 6 23 8 24" stroke="currentColor" strokeWidth="1" fill="none" strokeLinecap="round" />
+                      <path d="M6.5 5C5 7 3.5 9 3.5 12" stroke="currentColor" strokeWidth="0.8" fill="none" strokeLinecap="round" />
+                    </svg>
+                    <div className="text-center">
+                      <p className="text-white/90 text-sm md:text-base leading-tight" style={{ fontFamily: '"Playfair Display", serif' }}>Sund Krop</p>
+                      <p className="text-white/35 text-[9px] md:text-[10px] font-light tracking-widest uppercase">Betroet af mange</p>
                     </div>
+                    <svg width="16" height="24" viewBox="0 0 16 24" fill="none" className="text-white/30 flex-shrink-0 scale-x-[-1]">
+                      <path d="M8 1C6 4 3 6 2 10C1 14 2 17 3.5 20C4.5 22 6 23 8 24" stroke="currentColor" strokeWidth="1" fill="none" strokeLinecap="round" />
+                      <path d="M6.5 5C5 7 3.5 9 3.5 12" stroke="currentColor" strokeWidth="0.8" fill="none" strokeLinecap="round" />
+                    </svg>
                   </div>
-                  <p className="text-white/35 text-[9px] md:text-[10px] font-light tracking-widest uppercase">Google</p>
-                </div>
 
-                {/* Review Count */}
-                <div className="pl-4 md:pl-8 text-center">
-                  <p className="text-white/90 text-lg md:text-xl leading-tight font-light" style={{ fontFamily: '"Playfair Display", serif' }}>40+</p>
-                  <p className="text-white/35 text-[9px] md:text-[10px] font-light tracking-widest uppercase">Anmeldelser</p>
+                  {/* 100% Tilfredshed */}
+                  <div className="px-4 md:px-8 text-center">
+                    <p className="text-white/90 text-lg md:text-xl leading-tight font-light" style={{ fontFamily: '"Playfair Display", serif' }}>100%</p>
+                    <p className="text-white/35 text-[9px] md:text-[10px] font-light tracking-widest uppercase">Tilfredshed</p>
+                  </div>
+
+                  {/* Star Rating */}
+                  <div className="px-4 md:px-8 text-center">
+                    <div className="flex items-center gap-1.5 justify-center">
+                      <p className="text-white/90 text-lg md:text-xl leading-tight font-light" style={{ fontFamily: '"Playfair Display", serif' }}>5.0</p>
+                      <div className="flex gap-px">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} size={10} className="fill-white/40 text-white/40" />
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-white/35 text-[9px] md:text-[10px] font-light tracking-widest uppercase">Google</p>
+                  </div>
+
+                  {/* Review Count */}
+                  <div className="pl-4 md:pl-8 text-center">
+                    <p className="text-white/90 text-lg md:text-xl leading-tight font-light" style={{ fontFamily: '"Playfair Display", serif' }}>40+</p>
+                    <p className="text-white/35 text-[9px] md:text-[10px] font-light tracking-widest uppercase">Anmeldelser</p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Description text — directly on background, no box */}
-            <div className="w-full max-w-4xl mb-8">
-              <p className="text-base md:text-lg xl:text-xl text-white/80 leading-relaxed">
-                Hos Aktiv Fysioterapi tilbyder vi en aktiv, moderne og grundig undersøgelse for at finde årsagen til dine smerter. Vi tager dig seriøst, lytter til dine udfordringer og sammensætter en behandling skræddersyet til netop dig – så du kan komme tilbage til et aktivt og smertefrit liv.
-              </p>
-            </div>
+              {/* Description text — directly on background, no box */}
+              <div className="w-full max-w-4xl mb-8">
+                <p className="text-base md:text-lg xl:text-xl text-white/80 leading-relaxed">
+                  Hos Aktiv Fysioterapi tilbyder vi en aktiv, moderne og grundig undersøgelse for at finde årsagen til dine smerter. Vi tager dig seriøst, lytter til dine udfordringer og sammensætter en behandling skræddersyet til netop dig – så du kan komme tilbage til et aktivt og smertefrit liv.
+                </p>
+              </div>
 
-            {/* CTA buttons — stacked on mobile, side-by-side on sm+ */}
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full">
-              <a href="https://system.easypractice.net/overview/aktiv-fysioterapi" target="_blank" rel="noopener noreferrer" className="bg-white text-charcoal px-8 sm:px-12 py-4 sm:py-5 rounded font-bold text-base md:text-lg hover:scale-105 transition-transform shadow-xl text-center">
-                Book tid
-              </a>
-              <button className="bg-brand-secondary text-white px-8 sm:px-12 py-4 sm:py-5 rounded font-bold text-base md:text-lg hover:scale-105 transition-transform shadow-xl">
-                Gratis screening
-              </button>
-            </div>
-          </motion.div>
+              {/* CTA button */}
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full">
+                <a href="https://system.easypractice.net/overview/aktiv-fysioterapi" target="_blank" rel="noopener noreferrer" className="bg-white text-charcoal px-8 sm:px-12 py-4 sm:py-5 rounded font-bold text-base md:text-lg hover:scale-105 transition-transform shadow-xl text-center">
+                  Book tid
+                </a>
+              </div>
+            </motion.div>
           </div>{/* end mt-auto wrapper */}
         </div>
       </section>
 
       {/* Treatments Section */}
-      <section id="behandlinger" className="py-10 md:py-16 bg-[#FAF7F2] overflow-hidden">
+      < section id="behandlinger" className="py-10 md:py-16 bg-[#FAF7F2] overflow-hidden" >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-8 md:mb-16 gap-6">
             <div className="max-w-2xl">
-              <h2 className="font-bold mb-4 text-brand-secondary">Behandlinger</h2>
-              <p className="text-lg text-charcoal/70">
+              <h2 className="text-3xl xl:text-4xl font-bold mb-4 text-brand-primary">Behandlinger</h2>
+              <p className="text-lg md:text-xl xl:text-2xl text-charcoal/70">
                 Vi tilbyder en bred vifte af specialiserede behandlinger tilpasset dine unikke behov og udfordringer.
               </p>
             </div>
@@ -228,7 +231,7 @@ function Home() {
           </div>
           <Carousel ref={treatmentsRef} items={TREATMENTS} />
         </div>
-      </section>
+      </section >
 
       <WaveDivider fromColor="#FAF7F2" toColor="#ffffff" />
 
@@ -279,7 +282,7 @@ function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-8 md:mb-16 gap-6">
             <div className="max-w-2xl">
-              <h2 className="font-bold mb-4 md:mb-8">Mød holdet bag Aktiv Fysioterapi</h2>
+              <h2 className="text-3xl xl:text-4xl font-bold mb-4 md:mb-8 text-brand-primary">Mød holdet bag Aktiv Fysioterapi</h2>
               <p className="text-lg md:text-xl xl:text-2xl text-charcoal/70">
                 Vores team består af engagerede og dygtige fysioterapeuter, der står klar til at hjælpe dig med din genoptræning og behandling.
               </p>
@@ -328,46 +331,50 @@ function Home() {
             {/* Right: numbered news list */}
             <div className="flex-1">
               {NEWS.map((item, index) => (
-                <motion.a
+                <motion.div
                   key={item.id}
-                  href="#"
-                  className="group relative block py-6 cursor-pointer"
+                  className="group relative"
                   initial={false}
                   whileHover="hover"
                 >
-                  <div className="flex items-center gap-6">
-                    {/* Numbered circle */}
-                    <div className="relative w-11 h-11 rounded-full border-2 border-charcoal/20 flex items-center justify-center flex-shrink-0 overflow-hidden transition-all duration-400 group-hover:border-brand-primary group-hover:shadow-lg group-hover:shadow-brand-primary/20">
-                      <div className="absolute inset-0 bg-brand-primary scale-0 rounded-full transition-transform duration-400 ease-out group-hover:scale-100" />
-                      <span className="relative z-10 text-sm font-bold text-charcoal/50 transition-colors duration-300 group-hover:text-white">
-                        {item.id}
+                  <Link
+                    to={`/blog/${item.slug}`}
+                    className="block py-6 cursor-pointer"
+                  >
+                    <div className="flex items-center gap-6">
+                      {/* Numbered circle */}
+                      <div className="relative w-11 h-11 rounded-full border-2 border-charcoal/20 flex items-center justify-center flex-shrink-0 overflow-hidden transition-all duration-400 group-hover:border-brand-primary group-hover:shadow-lg group-hover:shadow-brand-primary/20">
+                        <div className="absolute inset-0 bg-brand-primary scale-0 rounded-full transition-transform duration-400 ease-out group-hover:scale-100" />
+                        <span className="relative z-10 text-sm font-bold text-charcoal/50 transition-colors duration-300 group-hover:text-white">
+                          {item.id}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="flex-1 text-lg md:text-xl xl:text-2xl font-semibold text-charcoal/80 transition-colors duration-300 group-hover:text-charcoal">
+                        {item.title}
+                      </h3>
+
+                      {/* Date — visible on desktop */}
+                      <span className="hidden md:block text-sm text-charcoal/40 mr-4 transition-colors duration-300 group-hover:text-charcoal/60">
+                        {item.date}
                       </span>
+
+                      {/* Arrow + Læs mere */}
+                      <div className="flex items-center gap-2 text-charcoal/40 transition-all duration-300 group-hover:text-brand-primary">
+                        <span className="text-sm font-semibold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 hidden sm:inline">
+                          Læs mere
+                        </span>
+                        <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+                      </div>
                     </div>
 
-                    {/* Title */}
-                    <h3 className="flex-1 text-lg md:text-xl xl:text-2xl font-semibold text-charcoal/80 transition-colors duration-300 group-hover:text-charcoal">
-                      {item.title}
-                    </h3>
-
-                    {/* Date — visible on desktop */}
-                    <span className="hidden md:block text-sm text-charcoal/40 mr-4 transition-colors duration-300 group-hover:text-charcoal/60">
-                      {item.date}
-                    </span>
-
-                    {/* Arrow + Læs mere */}
-                    <div className="flex items-center gap-2 text-charcoal/40 transition-all duration-300 group-hover:text-brand-primary">
-                      <span className="text-sm font-semibold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 hidden sm:inline">
-                        Læs mere
-                      </span>
-                      <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+                    {/* Bottom divider with gradient reveal */}
+                    <div className="absolute bottom-0 left-0 right-0 h-px bg-charcoal/10">
+                      <div className="h-full w-0 bg-gradient-to-r from-brand-primary to-brand-secondary transition-all duration-500 ease-out group-hover:w-full" />
                     </div>
-                  </div>
-
-                  {/* Bottom divider with gradient reveal */}
-                  <div className="absolute bottom-0 left-0 right-0 h-px bg-charcoal/10">
-                    <div className="h-full w-0 bg-gradient-to-r from-brand-primary to-brand-secondary transition-all duration-500 ease-out group-hover:w-full" />
-                  </div>
-                </motion.a>
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -571,7 +578,7 @@ function Home() {
       <section className="relative overflow-hidden">
         {/* Background image + overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-black/60 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/75 z-10" />
           <img
             src="/hero-buttom-cta.png"
             alt="Aktiv Fysioterapi"
@@ -580,121 +587,153 @@ function Home() {
           />
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-6 py-20 md:py-28 xl:py-36">
-          <div className="max-w-2xl">
-            {/* Follow heading */}
-            <p className="text-white/70 font-semibold italic text-lg mb-2">Følg os på</p>
-            <h2 className="text-white font-bold mb-12 leading-tight">Facebook & Instagram</h2>
+        {/* Top: Header + Ratings */}
+        <div className="relative z-20 max-w-5xl mx-auto px-6 pt-24 md:pt-32 xl:pt-40 pb-12 text-center">
+          {/* Section label */}
+          <p className="text-brand-secondary text-xs font-semibold tracking-[0.3em] uppercase mb-4">Anmeldelser & Sociale Medier</p>
 
-            {/* Ratings */}
-            <div className="mb-10">
-              <h3 className="text-white font-bold text-xl mb-6">Anmeldelser</h3>
+          {/* Main heading */}
+          <h2 className="text-3xl md:text-5xl xl:text-6xl text-white font-bold leading-tight mb-4" style={{ fontFamily: '"Playfair Display", serif' }}>
+            Hvad vores <span className="italic text-brand-secondary">klienter</span> siger
+          </h2>
+          <p className="text-white/50 text-base md:text-lg max-w-xl mx-auto mb-12 leading-relaxed">
+            Vi er stolte af den tillid, vores patienter viser os. Læs hvad de siger om deres oplevelse hos Aktiv Fysioterapi.
+          </p>
 
-              <div className="flex flex-col sm:flex-row gap-8">
-                {/* Google */}
-                <a href="https://www.google.com/maps/place/Aktiv+Fysioterapi/@56.8890193,9.8348948,17z/data=!4m8!3m7!1s0x46494b9b884212d7:0x394927d844b70a2c!8m2!3d56.8890193!4d9.8374697!9m1!1b1!16s%2Fg%2F11k9mq4ywk" target="_blank" rel="noopener noreferrer" className="group">
-                  <div className="flex items-center gap-3 mb-1.5">
-                    <span className="text-white text-3xl font-bold">5.0</span>
-                    <div className="flex gap-0.5">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={18} className="fill-brand-secondary text-brand-secondary" />
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-white/60 text-sm group-hover:text-white/80 transition-colors">Google anmeldelser →</p>
-                </a>
-
-                {/* Trustpilot */}
-                <a href="https://dk.trustpilot.com/review/aktiv-fysioterapi.dk" target="_blank" rel="noopener noreferrer" className="group">
-                  <div className="flex items-center gap-3 mb-1.5">
-                    <span className="text-white text-3xl font-bold">4.7</span>
-                    <div className="flex gap-0.5">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={18} className={i < 4 ? 'fill-[#00B67A] text-[#00B67A]' : 'fill-[#00B67A]/40 text-[#00B67A]/40'} />
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-white/60 text-sm group-hover:text-white/80 transition-colors">Trustpilot · 40 anmeldelser →</p>
-                </a>
-              </div>
-            </div>
-
-            {/* Auto-rotating reviews */}
-            <div className="mb-10 min-h-[120px] relative">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={reviewIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/10"
-                >
-                  <div className="flex gap-0.5 mb-3">
-                    {[...Array(GOOGLE_REVIEWS[reviewIndex].rating)].map((_, i) => (
-                      <Star key={i} size={14} className="fill-brand-secondary text-brand-secondary" />
-                    ))}
-                  </div>
-                  <p className="text-white/80 italic leading-relaxed mb-3">
-                    "{GOOGLE_REVIEWS[reviewIndex].text}"
-                  </p>
-                  <p className="text-white/50 text-sm font-semibold">— {GOOGLE_REVIEWS[reviewIndex].name}</p>
-                </motion.div>
-              </AnimatePresence>
-              {/* Dots indicator */}
-              <div className="flex gap-2 mt-4">
-                {GOOGLE_REVIEWS.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setReviewIndex(i)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${i === reviewIndex ? 'bg-white w-6' : 'bg-white/30 hover:bg-white/50'}`}
-                  />
+          {/* Rating cards */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 mb-8">
+            {/* Google card */}
+            <a
+              href="https://www.google.com/maps/place/Aktiv+Fysioterapi/@56.8890193,9.8348948,17z/data=!4m8!3m7!1s0x46494b9b884212d7:0x394927d844b70a2c!8m2!3d56.8890193!4d9.8374697!9m1!1b1!16s%2Fg%2F11k9mq4ywk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex-1 max-w-xs mx-auto sm:mx-0 bg-white/[0.08] backdrop-blur-md border border-white/[0.12] rounded-2xl p-6 hover:bg-white/[0.14] hover:border-white/25 hover:scale-[1.03] transition-all duration-300"
+            >
+              <div className="flex items-center justify-center gap-1 mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={20} className="fill-brand-secondary text-brand-secondary" />
                 ))}
               </div>
-            </div>
+              <p className="text-white text-4xl font-bold mb-1" style={{ fontFamily: '"Playfair Display", serif' }}>5.0</p>
+              <p className="text-white/40 text-sm font-medium">Google · 40+ anmeldelser</p>
+              <p className="text-brand-secondary text-xs font-semibold mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Se anmeldelser →</p>
+            </a>
 
-            {/* Subtitle */}
-            <p className="text-white/60 text-sm mb-8 max-w-lg">
-              Læs mere på vores Facebook og Instagram side, hvad vores kunder siger om os.
-            </p>
+            {/* Trustpilot card */}
+            <a
+              href="https://dk.trustpilot.com/review/aktiv-fysioterapi.dk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex-1 max-w-xs mx-auto sm:mx-0 bg-white/[0.08] backdrop-blur-md border border-white/[0.12] rounded-2xl p-6 hover:bg-white/[0.14] hover:border-white/25 hover:scale-[1.03] transition-all duration-300"
+            >
+              <div className="flex items-center justify-center gap-1 mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={20} className={i < 4 ? 'fill-[#00B67A] text-[#00B67A]' : 'fill-[#00B67A]/40 text-[#00B67A]/40'} />
+                ))}
+              </div>
+              <p className="text-white text-4xl font-bold mb-1" style={{ fontFamily: '"Playfair Display", serif' }}>4.7</p>
+              <p className="text-white/40 text-sm font-medium">Trustpilot · 40 anmeldelser</p>
+              <p className="text-[#00B67A] text-xs font-semibold mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Se anmeldelser →</p>
+            </a>
+          </div>
+        </div>
 
-            {/* Social icons */}
-            <div className="flex gap-4 mb-10">
-              <a
-                href="https://www.facebook.com/AktivfysioterapiFB"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full border-2 border-white/30 flex items-center justify-center text-white hover:border-white hover:bg-white/10 hover:shadow-lg hover:shadow-white/10 transition-all duration-300"
-              >
-                <Facebook size={22} />
-              </a>
-              <a
-                href="https://www.instagram.com/aktiv_fysio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full border-2 border-white/30 flex items-center justify-center text-white hover:border-white hover:bg-white/10 hover:shadow-lg hover:shadow-white/10 transition-all duration-300"
-              >
-                <Instagram size={22} />
-              </a>
-            </div>
+        {/* Marquee Reviews */}
+        <div className="relative z-20 w-full mb-6">
+          <div className="relative flex w-full flex-col items-center justify-center overflow-hidden gap-4 py-4">
+            <Marquee className="[--duration:25s]">
+              {GOOGLE_REVIEWS.slice(0, Math.ceil(GOOGLE_REVIEWS.length / 2)).map((review, i) => (
+                <figure
+                  key={i}
+                  className="relative h-full w-72 cursor-pointer overflow-hidden rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm p-5 hover:bg-white/15 transition-colors duration-300"
+                >
+                  <div className="flex flex-row items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                      {review.name.charAt(0)}
+                    </div>
+                    <div className="flex flex-col">
+                      <figcaption className="text-sm font-semibold text-white">{review.name}</figcaption>
+                      <div className="flex gap-0.5">
+                        {[...Array(review.rating)].map((_, j) => (
+                          <Star key={j} size={11} className="fill-brand-secondary text-brand-secondary" />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <blockquote className="text-sm text-white/75 italic leading-relaxed">"{review.text}"</blockquote>
+                </figure>
+              ))}
+            </Marquee>
+            <Marquee reverse className="[--duration:25s]">
+              {GOOGLE_REVIEWS.slice(Math.ceil(GOOGLE_REVIEWS.length / 2)).map((review, i) => (
+                <figure
+                  key={i}
+                  className="relative h-full w-72 cursor-pointer overflow-hidden rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm p-5 hover:bg-white/15 transition-colors duration-300"
+                >
+                  <div className="flex flex-row items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                      {review.name.charAt(0)}
+                    </div>
+                    <div className="flex flex-col">
+                      <figcaption className="text-sm font-semibold text-white">{review.name}</figcaption>
+                      <div className="flex gap-0.5">
+                        {[...Array(review.rating)].map((_, j) => (
+                          <Star key={j} size={11} className="fill-brand-secondary text-brand-secondary" />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <blockquote className="text-sm text-white/75 italic leading-relaxed">"{review.text}"</blockquote>
+                </figure>
+              ))}
+            </Marquee>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-black/70"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-black/70"></div>
+          </div>
+        </div>
 
-            {/* CTA buttons */}
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <a
-                href="https://dk.trustpilot.com/review/aktiv-fysioterapi.dk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-brand-secondary text-white px-8 py-4 rounded font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform shadow-lg text-center"
-              >
-                Læs anmeldelser
-              </a>
-              <a
-                href="#kontakt"
-                className="border-2 border-white/40 text-white px-8 py-4 rounded font-bold text-sm uppercase tracking-wider hover:bg-white/10 hover:border-white/70 transition-all text-center"
-              >
-                Kontakt klinikken
-              </a>
-            </div>
+        {/* Bottom: Social + CTA */}
+        <div className="relative z-20 max-w-3xl mx-auto px-6 pb-24 md:pb-32 xl:pb-40 text-center">
+          <p className="text-white/50 text-sm mb-6">
+            Følg med i hverdagen hos Aktiv Fysioterapi
+          </p>
+
+          {/* Social icons */}
+          <div className="flex justify-center gap-4 mb-10">
+            <a
+              href="https://www.facebook.com/AktivfysioterapiFB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group w-14 h-14 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/[0.12] flex items-center justify-center text-white hover:bg-white/[0.18] hover:border-white/30 hover:scale-110 transition-all duration-300"
+            >
+              <Facebook size={24} />
+            </a>
+            <a
+              href="https://www.instagram.com/aktiv_fysio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group w-14 h-14 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/[0.12] flex items-center justify-center text-white hover:bg-white/[0.18] hover:border-white/30 hover:scale-110 transition-all duration-300"
+            >
+              <Instagram size={24} />
+            </a>
+          </div>
+
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row justify-center flex-wrap gap-4">
+            <a
+              href="https://dk.trustpilot.com/review/aktiv-fysioterapi.dk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-brand-secondary text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform shadow-lg shadow-brand-secondary/20 text-center"
+            >
+              Læs alle anmeldelser
+            </a>
+            <a
+              href="#kontakt"
+              className="border-2 border-white/30 text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white/10 hover:border-white/60 transition-all text-center"
+            >
+              Kontakt klinikken
+            </a>
           </div>
         </div>
       </section>
@@ -810,6 +849,6 @@ function Home() {
         </div>
 
       </footer>
-    </div>
+    </div >
   );
 }

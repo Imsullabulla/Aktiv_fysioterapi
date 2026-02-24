@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, CreditCard, Shield, Heart, Phone, Mail, CheckCircle, Smartphone, FileText, Landmark, Banknote } from 'lucide-react';
+import { ArrowLeft, CreditCard, Shield, Heart, Phone, Mail, CheckCircle, Smartphone, FileText, Landmark, Banknote, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Navbar } from './Navbar';
 import { FlowingLines } from './FlowingLines';
@@ -172,10 +172,31 @@ export function PaymentsPage() {
                                     laver vi en fysioterapeutisk udredning, hvor din fysioterapeut forklarer, hvor længe
                                     behandlingsforløbet forventes at vare.
                                 </p>
-                                <p className="text-charcoal/60 leading-relaxed">
+                                <p className="text-charcoal/60 leading-relaxed mb-6">
                                     Fastpris forløbet er en samlet pris, der er lavere end prisen for enkeltstående sessioner.
                                     Du sparer penge og undgår bekymringen om, hvor længe du skal være i forløb.
                                 </p>
+
+                                {/* E-book offer callout */}
+                                <div className="p-5 bg-brand-secondary/5 rounded-xl border border-brand-secondary/20 relative overflow-hidden group">
+                                    <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                                        <Sparkles size={40} className="text-brand-secondary" />
+                                    </div>
+                                    <h4 className="font-bold text-brand-primary flex items-center gap-2 mb-2">
+                                        <Sparkles size={18} className="text-brand-secondary" />
+                                        Særtilbud til nye klienter
+                                    </h4>
+                                    <p className="text-charcoal/70 text-sm leading-relaxed">
+                                        Lige nu modtager alle nye klienter en gratis e-bog om <span className="font-bold">smertelindring</span> ved opstart af et fast forløb.
+                                        En perfekt guide til dig, der vil tage ejerskab over din genoptræning.
+                                    </p>
+                                    <div className="mt-3 flex items-center gap-2">
+                                        <span className="inline-block w-2 h-2 rounded-full bg-brand-secondary animate-pulse" />
+                                        <span className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-brand-secondary/80">
+                                            Begrænset tidsperiode
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </motion.div>

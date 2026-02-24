@@ -306,9 +306,6 @@ export const Navbar: React.FC<NavbarProps> = ({ alwaysSolid = false }) => {
                 >
                   Book tid
                 </a>
-                <button className="w-full bg-brand-primary text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-shadow">
-                  Gratis screening
-                </button>
               </motion.div>
             </div>
           </motion.div>

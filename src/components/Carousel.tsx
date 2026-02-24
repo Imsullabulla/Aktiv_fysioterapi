@@ -106,15 +106,26 @@ export const Carousel = forwardRef<CarouselHandle, CarouselProps>(({ items, butt
                 {item.description && (
                   <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">{item.description}</p>
                 )}
-                <Link
-                  to={item.link}
-                  className="inline-block px-4 py-2 bg-white/20 backdrop-blur-md text-white rounded-full text-sm font-medium border border-white/30 hover:bg-white/30 transition-colors"
-                  onClick={(e) => {
-                    if (item.link === '#') e.preventDefault();
-                  }}
-                >
-                  {buttonLabel}
-                </Link>
+                {item.link.startsWith('http') ? (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-4 py-2 bg-white/20 backdrop-blur-md text-white rounded-full text-sm font-medium border border-white/30 hover:bg-white/30 transition-colors"
+                  >
+                    {buttonLabel}
+                  </a>
+                ) : (
+                  <Link
+                    to={item.link}
+                    className="inline-block px-4 py-2 bg-white/20 backdrop-blur-md text-white rounded-full text-sm font-medium border border-white/30 hover:bg-white/30 transition-colors"
+                    onClick={(e) => {
+                      if (item.link === '#') e.preventDefault();
+                    }}
+                  >
+                    {buttonLabel}
+                  </Link>
+                )}
               </div>
             </div>
           </motion.div>
