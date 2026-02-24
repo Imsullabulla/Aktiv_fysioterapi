@@ -52,6 +52,64 @@ const NEWS = BLOG_POSTS.slice(0, 4).map((post, i) => ({
   date: post.date,
 }));
 
+const FRAME_COUNT = 80;
+const FRAME_INTERVAL = 1000 / 24; // 24 fps
+
+function HeroCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const frames: HTMLImageElement[] = Array.from({ length: FRAME_COUNT }, (_, i) => {
+      const img = new Image();
+      img.src = `/frames/ezgif-frame-${String(i + 1).padStart(3, '0')}.jpg`;
+      return img;
+    });
+
+    let animId: number;
+    let frameIdx = 0;
+    let lastTime = 0;
+
+    const draw = (img: HTMLImageElement) => {
+      const cw = canvas.width;
+      const ch = canvas.height;
+      const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+      const dw = img.naturalWidth * scale;
+      const dh = img.naturalHeight * scale;
+      ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+    };
+
+    const tick = (t: number) => {
+      animId = requestAnimationFrame(tick);
+      if (t - lastTime < FRAME_INTERVAL) return;
+      lastTime = t;
+      const img = frames[frameIdx];
+      if (img.complete && img.naturalWidth > 0) draw(img);
+      frameIdx = (frameIdx + 1) % FRAME_COUNT;
+    };
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    resize();
+    window.addEventListener('resize', resize);
+    animId = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
+}
+
 export default function App() {
   return (
     <Router>
@@ -92,15 +150,7 @@ function Home() {
       <section id="hero" className="relative h-[100vh] w-full overflow-hidden bg-charcoal">
         <div className="absolute inset-0 w-full h-full">
           <div className="absolute inset-0 bg-black/40 z-10" />
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/Hero_video.mp4" type="video/mp4" />
-          </video>
+          <HeroCanvas />
         </div>
 
         <div className="relative z-20 h-full max-w-7xl mx-auto px-6 flex flex-col justify-end items-start pb-12 md:pb-20">
