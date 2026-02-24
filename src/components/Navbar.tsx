@@ -87,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({ alwaysSolid = false }) => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 8, scale: 0.97 }}
                           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                          className="absolute -left-40 mt-5 w-[620px] rounded-2xl overflow-hidden z-[60]"
+                          className="absolute -left-20 lg:-left-40 mt-5 w-[min(540px,85vw)] lg:w-[580px] xl:w-[640px] rounded-2xl overflow-hidden z-[60]"
                           style={{
                             background: 'rgba(255, 255, 255, 0.92)',
                             backdropFilter: 'blur(20px)',

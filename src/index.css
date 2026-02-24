@@ -37,25 +37,18 @@ html, body {
     @apply font-semibold tracking-tight;
   }
 
-  h1 {
-    font-size: 3.5rem;
-  }
-
-  h2 {
-    font-size: 1.375rem;
-  }
 }
 
 .section-padding {
-  @apply py-[60px] md:py-[120px];
+  @apply py-[60px] md:py-[120px] xl:py-[160px];
 }
 
 .element-spacing {
-  @apply space-y-[30px] md:space-y-[60px];
+  @apply space-y-[30px] md:space-y-[60px] xl:space-y-[80px];
 }
 
 .inner-spacing {
-  @apply space-y-[20px] md:space-y-[30px];
+  @apply space-y-[20px] md:space-y-[30px] xl:space-y-[40px];
 }
 
 /* Custom Scrollbar for Carousels */

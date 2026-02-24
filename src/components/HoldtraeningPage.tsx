@@ -106,7 +106,7 @@ export function HoldtraeningPage() {
                             frameBorder="0"
                             className={`transition-opacity duration-500 ${iframeLoaded ? 'opacity-100' : 'opacity-0 h-0'}`}
                             onLoad={() => setIframeLoaded(true)}
-                            style={{ border: 'none' }}
+                            style={{ border: 'none', height: 'clamp(600px, 75vh, 1100px)' }}
                         />
                     </motion.div>
                 </div>

@@ -115,7 +115,7 @@ function Home() {
 
 
             {/* Main heading */}
-            <h1 className="text-3xl md:text-5xl lg:text-6xl text-white leading-[1.1] mb-6 max-w-5xl" style={{ fontFamily: '"Playfair Display", serif' }}>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-white leading-[1.1] mb-6 max-w-5xl" style={{ fontFamily: '"Playfair Display", serif' }}>
               <span className="font-semibold">Helhedsorienteret</span>
               <br />
               <span className="italic font-medium text-brand-secondary">behandling</span>
@@ -172,7 +172,7 @@ function Home() {
 
             {/* Description text — directly on background, no box */}
             <div className="w-full max-w-4xl mb-8">
-              <p className="text-base md:text-lg text-white/80 leading-relaxed">
+              <p className="text-base md:text-lg xl:text-xl text-white/80 leading-relaxed">
                 Hos Aktiv Fysioterapi tilbyder vi en aktiv, moderne og grundig undersøgelse for at finde årsagen til dine smerter. Vi tager dig seriøst, lytter til dine udfordringer og sammensætter en behandling skræddersyet til netop dig – så du kan komme tilbage til et aktivt og smertefrit liv.
               </p>
             </div>
@@ -233,7 +233,7 @@ function Home() {
 
             <div className="flex flex-col justify-center">
               <div className="relative">
-                <h3 className="text-3xl font-bold mb-6 text-brand-primary">Din fysioterapeut i Støvring</h3>
+                <h3 className="text-3xl xl:text-4xl font-bold mb-6 text-brand-primary">Din fysioterapeut i Støvring</h3>
                 <div className="prose prose-lg text-charcoal/80 space-y-4 mb-10 max-w-none">
                   <p>
                     Hos Aktiv Fysioterapi er du i centrum. Vores erfarne fysioterapeuter i Støvring tilbyder grundig vurdering og behandling af bl.a. rygsmerter, nakkesmerter, ledproblemer og sportsrelaterede skader.
@@ -269,7 +269,7 @@ function Home() {
           <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-8 md:mb-16 gap-6">
             <div className="max-w-2xl">
               <h2 className="font-bold mb-4 md:mb-8">Mød holdet bag Aktiv Fysioterapi</h2>
-              <p className="text-lg md:text-xl text-charcoal/70">
+              <p className="text-lg md:text-xl xl:text-2xl text-charcoal/70">
                 Vores team består af engagerede og dygtige fysioterapeuter, der står klar til at hjælpe dig med din genoptræning og behandling.
               </p>
             </div>
@@ -301,9 +301,9 @@ function Home() {
       <section id="nyheder" className="section-padding relative overflow-hidden">
         <FlowingLines variant="alt" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 xl:gap-28">
             {/* Left: title & description */}
-            <div className="lg:w-72 flex-none">
+            <div className="lg:w-72 xl:w-80 flex-none">
               <h2 className="font-bold mb-4">Nyheder</h2>
               <div className="w-12 h-0.5 bg-charcoal/30 mb-4" />
               <p className="text-sm text-charcoal/50 leading-relaxed font-normal">
@@ -334,7 +334,7 @@ function Home() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="flex-1 text-lg md:text-xl font-semibold text-charcoal/80 transition-colors duration-300 group-hover:text-charcoal">
+                    <h3 className="flex-1 text-lg md:text-xl xl:text-2xl font-semibold text-charcoal/80 transition-colors duration-300 group-hover:text-charcoal">
                       {item.title}
                     </h3>
 
@@ -368,9 +368,9 @@ function Home() {
       {/* Godt at vide — FAQ Accordion */}
       <section id="faq" className="section-padding bg-[#FAF7F2]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 xl:gap-28">
             {/* Left: title */}
-            <div className="lg:w-72 flex-none">
+            <div className="lg:w-72 xl:w-80 flex-none">
               <h2 className="font-bold mb-4">Godt at vide</h2>
               <div className="w-12 h-0.5 bg-charcoal/30 mb-4" />
               <p className="text-sm text-charcoal/50 leading-relaxed font-normal">
@@ -501,7 +501,7 @@ function Home() {
               <iframe
                 title="Aktiv Fysioterapi kort"
                 src="https://maps.google.com/maps?q=Hobrovej+91B,+9530+St%C3%B8vring&output=embed&hl=da"
-                className="w-full h-72 lg:h-80 rounded border-0"
+                className="w-full h-72 lg:h-80 xl:h-96 2xl:h-[420px] rounded border-0"
                 loading="lazy"
               />
               <ul className="space-y-4 text-charcoal/70">
@@ -569,7 +569,7 @@ function Home() {
           />
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-6 py-20 md:py-28">
+        <div className="relative z-20 max-w-7xl mx-auto px-6 py-20 md:py-28 xl:py-36">
           <div className="max-w-2xl">
             {/* Follow heading */}
             <p className="text-white/70 font-semibold italic text-lg mb-2">Følg os på</p>
@@ -693,7 +693,7 @@ function Home() {
 
         {/* CTA Banner */}
         <div className="max-w-3xl mx-auto px-6 py-12 md:py-20 text-center">
-          <h2 className="text-2xl md:text-4xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: '"Playfair Display", serif' }}>
+          <h2 className="text-2xl md:text-4xl xl:text-5xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: '"Playfair Display", serif' }}>
             Har du brug for{' '}
             <span className="italic text-brand-secondary">professionel</span>
             {' '}hjælp?
@@ -715,7 +715,7 @@ function Home() {
 
         {/* 4-column grid */}
         <div className="max-w-7xl mx-auto px-6 pt-8 md:pt-16 pb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 xl:gap-16 mb-8 md:mb-16">
             <div>
               <div className="mb-8">
                 <img

@@ -77,16 +77,16 @@ export const Carousel = forwardRef<CarouselHandle, CarouselProps>(({ items, butt
   return (
     <div className="relative w-full overflow-hidden">
       {/* Left fade */}
-      <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 lg:w-44 xl:w-56 bg-gradient-to-r from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
       {/* Right fade */}
-      <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 lg:w-44 xl:w-56 bg-gradient-to-l from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
       <div ref={scrollRef} className="flex gap-6 overflow-x-auto no-scrollbar pb-8 px-4 md:px-0">
         {loopedItems.map((item, index) => (
           <motion.div
             key={`${item.id}-${index}`}
             whileHover={{ scale: 1.012 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="flex-none w-[280px] md:w-[350px] aspect-[3/4] relative rounded-2xl overflow-hidden group"
+            className="flex-none w-[280px] md:w-[340px] lg:w-[380px] xl:w-[420px] aspect-[3/4] relative rounded-2xl overflow-hidden group"
           >
             {item.image ? (
               <img
